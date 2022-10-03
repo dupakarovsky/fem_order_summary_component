@@ -1,0 +1,173 @@
+@use "/scss/all" as *;
+
+:root {
+   // COLORS
+   --pale-blue: 225 100% 94%; /* hsl(225, 100%, 94%) */
+   --bright-blue: 245 75% 52%; /* hsl(245, 75%, 52%) */
+   --very-pale-blue: 225 100% 98%; /* hsl(225, 100%, 98%)*/
+   --desaturated-blue: 224 23% 55%; /* hsl(224, 23%, 55%) */
+   --dark-blue: 223 47% 23%; /* hsl(223, 47%, 23%) */
+   // FONT-WEIGHTS:
+   --reg: 500;
+   --bold: 700;
+   --black: 900;
+   // MEASURAMENTS
+   --body-pad: 2.8rem;
+   --content-pad: 4.8rem;
+}
+
+body {
+   //
+   display: grid;
+   place-items: center;
+   //
+   font-family: "Red Hat Display", sans-serif;
+   font-size: 1.6rem;
+   background-color: hsl(var(--pale-blue));
+   padding: var(--body-pad);
+   background-image: url(/img/pattern-background-desktop.svg);
+   background-repeat: repeat-x;
+}
+
+.card {
+   //
+   display: flex;
+   flex-direction: column;
+   //
+   max-width: 45rem;
+   background-color: white;
+   border-radius: 1.8rem;
+   overflow: hidden;
+   box-shadow: 0 2rem 3rem hsl(var(--bright-blue) / 0.1);
+
+   &__image-container img {
+      width: 100%;
+   }
+
+   &__content {
+      //
+      display: grid;
+      align-items: center;
+      justify-items: stretch;
+      //
+      text-align: center;
+      padding-inline: var(--content-pad);
+   }
+
+   &__header {
+      margin-top: 5rem;
+      font-size: 2.8rem;
+      font-weight: var(--black);
+      color: hsl(var(--dark-blue));
+   }
+
+   &__summary {
+      margin-block: 2rem;
+      color: hsl(var(--desaturated-blue));
+      padding-inline: 2rem;
+   }
+
+   &__plan-container {
+      //
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      //
+      width: 100%;
+      padding-block: calc(var(--content-pad) / 2);
+      border-radius: 0.9rem;
+      background-color: hsl(var(--very-pale-blue));
+
+      & > img:first-child {
+         max-width: 4.8rem;
+         aspect-ratio: 1;
+         margin-inline: 2.4rem;
+      }
+   }
+
+   &__plan-data {
+      margin-inline-end: auto;
+      text-align: start;
+   }
+
+   &__plan-type {
+      color: hsl(var(--dark-blue));
+      font-size: 1.6rem;
+      font-weight: var(--black);
+   }
+
+   &__plan-price {
+      font-size: 1.5rem;
+      font-weight: var(--reg);
+      color: hsl(var(--desaturated-blue));
+   }
+
+   &__plan-link {
+      margin-inline: calc(var(--content-pad) / 2);
+      &:link,
+      &:visited {
+         font-weight: var(--bold);
+         color: hsl(var(--bright-blue));
+      }
+      &:active,
+      &:hover {
+         text-decoration: none;
+         color: hsl(var(--bright-blue) / 0.75);
+      }
+   }
+}
+
+.btn {
+   font-weight: var(--bold);
+   border: none;
+   background: none;
+   padding-block: 1.7rem;
+   padding-inline: 1rem;
+   border-radius: 0.9rem;
+   cursor: pointer;
+
+   &:first-of-type {
+      margin-block-start: 3rem;
+      margin-block-end: 1.2rem;
+   }
+   &:last-of-type {
+      margin-block-end: 3rem;
+   }
+
+   &--proceed {
+      background-color: hsl(var(--bright-blue));
+      color: hsl(var(--very-pale-blue));
+      box-shadow: 0 2rem 2rem hsl(var(--bright-blue) / 0.2);
+
+      &:hover {
+         background-color: hsl(var(--bright-blue) / 0.75);
+      }
+   }
+
+   &--cancel {
+      //
+      justify-self: center;
+      //
+      color: hsl(var(--desaturated-blue));
+
+      &:hover {
+         color: hsl(var(--dark-blue));
+      }
+   }
+}
+
+@media screen and (max-width: 435px) {
+   :root {
+      font-size: 50%;
+   }
+   body {
+      background-image: url(/img/pattern-background-mobile.svg);
+   }
+   .card__content {
+      padding-inline: calc(var(--content-pad) / 2);
+   }
+   .card__header {
+      margin-top: 3rem;
+   }
+}
